@@ -64,7 +64,7 @@ func (o *ObjectController) GetAll() {
 // @Failure 403 :objectId is empty
 // @router /:objectId [put]
 func (o *ObjectController) Put() {
-	objectId := o.Ctx.Input.Param(":objectId")
+	Id_usuario := o.Ctx.Input.Param(":Id_usuario")
 	var ob models.Object
 	json.Unmarshal(o.Ctx.Input.RequestBody, &ob)
 
