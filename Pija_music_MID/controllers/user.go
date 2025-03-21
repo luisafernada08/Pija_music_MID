@@ -8,7 +8,8 @@ import (
 )
 
 // Operations about Users
-type UserController struct {
+type Usuario struct {
+	id
 	beego.Controller
 }
 

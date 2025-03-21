@@ -8,8 +8,13 @@ import (
 )
 
 // Operations about Users
-type UserController struct {
-	beego.Controller
+type USUARIO struct {
+	id       int    `orm:"column(ID);pk"`
+	nombre   string `orm:"column(Nombre);pk"`
+	aprllido string `orm:"column(Apellido);pk"`
+	fecha_creacion int `orm:"column(Fecha_Creacion);pk"`
+	feche_modificacion int`orm:"column(Fecha_Modificacion);pk"`
+	activo int`orm:"column(Activo);"`
 }
 
 // @Title CreateUser
@@ -19,14 +24,17 @@ type UserController struct {
 // @Failure 403 body is empty
 // @router / [post]
 func (u *UserController) Post() {
-	var body_usuario[]map[string]interface
-	var nombre.Alert
+	var nombre[]map[string]interface{}
 	var apellido []byte
-	var email []byte
-	var fecha de creacion[]byte
-	var fecha de modificacion []byte
-	if
-	json.Unmarshal(u.Ctx.Input.RequestBody, &user)
+	var activo.Alert
+	fmt.Println("activo es cunaod la persona es conectada",activo)
+
+	if err :=json.Unmarshal(c.Ctx.Input.RequestBody,&nombre);err inl {
+		json.Data,err :=json.
+	}
+
+
+	
 	uid := models.AddUser(user)
 	u.Data["json"] = map[string]string{"uid": uid}
 	u.ServeJSON()
