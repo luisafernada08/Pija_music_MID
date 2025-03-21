@@ -8,9 +8,8 @@
 package routers
 
 import (
-	"Pija_music_MID/controllers"
-
 	"github.com/astaxie/beego"
+	"github.com/sena_2824182/Pija_music_MID/controllers"
 )
 
 func init() {
@@ -23,6 +22,11 @@ func init() {
 		beego.NSNamespace("/user",
 			beego.NSInclude(
 				&controllers.UserController{},
+			),
+		),
+		beego.NSNamespace("/Administrador",
+			beego.NSInclude(
+				&controllers.AdministradorController{},
 			),
 		),
 	)

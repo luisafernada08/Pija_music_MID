@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"Pija_music_MID/models"
+	"github.com/sena_2824182/Pija_music_MID/models"
 	"encoding/json"
 	"fmt"
 	"github.com/astaxie/beego"
