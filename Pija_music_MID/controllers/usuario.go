@@ -1,20 +1,25 @@
 package controllers
 
 import (
-	"Pija_music_MID/models"
 	"encoding/json"
 	"fmt"
+
+	"command-line-argumentsC:\\Users\\User\\go\\src\\github.com\\sena_2824182\\mid_prueba\\services\\carta_servicios.go"
+	"github.com/Pija_music_MID/models"
 	"github.com/astaxie/beego"
+	"google.golang.org/genproto/googleapis/type/postaladdress"
 )
 
 // Operations about Users
 type USUARIO struct {
-	id       int    `orm:"column(ID);pk"`
-	nombre   string `orm:"column(Nombre);pk"`
-	aprllido string `orm:"column(Apellido);pk"`
-	fecha_creacion int `orm:"column(Fecha_Creacion);pk"`
-	feche_modificacion int`orm:"column(Fecha_Modificacion);pk"`
-	activo int`orm:"column(Activo);"`
+	id                 int    `orm:"column(ID);pk"`
+	nombre             string `orm:"column(Nombre);pk"`
+	aprllido           string `orm:"column(Apellido);pk"`
+	fecha_creacion     int    `orm:"column(Fecha_Creacion);pk"`
+	feche_modificacion int    `orm:"column(Fecha_Modificacion);pk"`
+	activo             int    `orm:"column(Activo);"`
+
+	beego.USUARIO
 }
 
 // @Title CreateUser
@@ -23,21 +28,44 @@ type USUARIO struct {
 // @Success 200 {int} models.User.Id
 // @Failure 403 body is empty
 // @router / [post]
-func (u *UserController) Post() {
-	var nombre[]map[string]interface{}
+func (u *USUARIOController) Post() {
+	var id []map[string]interface{}
+	var nombre []byte
 	var apellido []byte
-	var activo.Alert
-	fmt.Println("activo es cunaod la persona es conectada",activo)
+	var activo []byte
+	fmt.Println("activo es cunaod la persona es conectada", activo)
 
-	if err :=json.Unmarshal(c.Ctx.Input.RequestBody,&nombre);err inl {
-		json.Data,err :=json.
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &nombre); err == nil {
+		jsonData, err := json.MarshalIndent(nombre, "", "")
+		if err != nil {
+			fmt.Println("error de convertir a json", err)
+		}
+		json_usuario := id[1]
+		fmt.Println("id:", json_usuario)
+
+		json_usuario_byte, _ := json.Marshal(json_usuario)
+
+		response_usuario := services.Metodo_post("services_post",json_usuario_byte)
+		apellido = response_usuario
+		fmt.Println("este producto es el respot de post",string (response_usuario)) 
+		fmt.Println("json de ingreo ",jsonData)
 	}
+	var usario1 map[string]interface{}
+	json.Unmarshal(apellido,&usario1)
+
+	var body_usuario []map[string]interface{}
+	body_usuario = append(body_usuario, usario1["data"].(map[string]interface{}))
+
+	alerta.Cobe = "201",
+	alerta.Type = "post",
+	alerta.Body = body_usuario
+
+	c.Data["json"] = alerta
+
+	c.ServeJSON()
 
 
 	
-	uid := models.AddUser(user)
-	u.Data["json"] = map[string]string{"uid": uid}
-	u.ServeJSON()
 }
 
 // @Title GetAll
@@ -130,4 +158,3 @@ func (u *UserController) Logout() {
 	u.Data["json"] = "logout success"
 	u.ServeJSON()
 }
-
